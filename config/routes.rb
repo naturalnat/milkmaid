@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  get '/', to: 'sessions#welcome'
+  get '/login', to: 'users#new'
+  post '/login', to: 'users#create'
+  get '/signup', to: 'sessions#signup'
+  post '/signup', to: 'sessions#signup'
   resources :milks
   resources :orders
   resources :reviews
