@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stars: 
+  title: MyString
+  content: MyString
+  user: one
+  milk: one
+
+two:
+  stars: 
+  title: MyString
+  content: MyString
+  user: two
+  milk: two
