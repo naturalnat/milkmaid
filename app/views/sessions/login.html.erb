@@ -1,11 +1,12 @@
-<h1> log in </h1>
+<h1> Log In </h1>
 
-<%= form_for(User.new, url: '/login') do |f| %>
+<%= form_for(:user) do |f| %>
   <%= f.label :username %>
   <%= f.text_field :username %>
+
   <%= f. label :password %>
     <%= f.password_field :password %>
 
-<%= f.submit "sign up" %>
+<%= f.submit "Log In" %>
 
 <% end %>

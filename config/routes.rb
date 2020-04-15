@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
   get '/', to: 'sessions#welcome'
-  get '/login', to: 'users#new'
-  post '/login', to: 'users#create'
-  get '/signup', to: 'sessions#signup'
-  post '/signup', to: 'sessions#signup'
+  get '/login', to: 'sessions#login'
+  post '/login', to: 'sessions#create'
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
   delete '/logout', to: 'sessions#destroy'
+
   resources :milks
   resources :orders
   resources :reviews
