@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 class SessionsController < ApplicationController
   def welcome; end
@@ -8,17 +7,16 @@ class SessionsController < ApplicationController
     redirect_to '/'
   end
 
-  def login; end
+  def new; end
 
   def create
-    @user = User.find_by(username: params[:username])
-     if @user && @user.authenticate(password: params[:password])
+    @user = User.find_by(username: params[:user][:username])
+      if @user&.authenticate(password: params[:user][:password])
         sessions[:user_id] = @user.id
-        redirect_to user_path
-             byebug
-    else
-     flash[:error] = 'Please enter correct username and passowrd.'
-       redirect_to login_path
-  end
-end
+        redirect_to user_path(@user)
+      else
+        flash[:error] = 'Please enter correct username and password.'
+        redirect_to login_path
+      end
+    end
 end
