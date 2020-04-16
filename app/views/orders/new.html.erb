@@ -1,0 +1,14 @@
+<h1> Place an order! </h1>
+
+
+<p> Select how often you would like to receive your order: </p>
+
+<div>
+    <%=  form_for(@order) do |f| %>
+  <%=  f.select :frequency, frequency_options, :prompt => 'select one' %>
+    <%= f.select :size, size_options, :prompt => 'select one' %>
+ <%= f.submit "Place order" %>
+
+<% end %>
+
+</div>

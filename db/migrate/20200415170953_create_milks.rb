@@ -1,9 +1,8 @@
 class CreateMilks < ActiveRecord::Migration[6.0]
   def change
     create_table :milks do |t|
-      t.string :type
-      t.integer :size
-
+      t.string :milktype
+      t.boolean :in_order
 
       t.timestamps
     end

@@ -1,5 +1,6 @@
 
 class SessionsController < ApplicationController
+  
   def welcome; end
 
   def destroy
@@ -19,4 +20,5 @@ class SessionsController < ApplicationController
         redirect_to login_path
       end
     end
+
 end

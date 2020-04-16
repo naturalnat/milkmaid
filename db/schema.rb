@@ -13,14 +13,15 @@
 ActiveRecord::Schema.define(version: 2020_04_15_170953) do
 
   create_table "milks", force: :cascade do |t|
-    t.string "type"
+    t.string "milktype"
     t.integer "size"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "frequency"
+    t.string "frequency"
+    t.string "size"
     t.integer "user_id", null: false
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -43,8 +44,6 @@ ActiveRecord::Schema.define(version: 2020_04_15_170953) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
-    t.string "firstname"
-    t.string "lastname"
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
