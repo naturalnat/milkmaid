@@ -1,5 +1,6 @@
-class UsersController < ApplicationController
+# frozen_string_literal: true
 
+class UsersController < ApplicationController
   def new
     @user = User.new
   end
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
     else
       render :new
     end
-    end
+  end
 
   def show
     @user = User.find_by_id(params[:id])
