@@ -1,0 +1,31 @@
+
+<%= form_for(@review) do |f|%>
+  <% if params[:milk_id] %>
+    <%= f.hidden_field :milk_id %>
+  <% else %>
+    <div>
+      <%= f.label :milk_id, "Select item to review" %>
+      <%= f.collection_select :milk_id, Milk.all, :id, :milktype, include_blank: true %>
+    </div>
+  <% end %>
+  <div>
+    <%= f.label :stars %>
+    <%= f.number_field :stars, min:0, max:5 %>
+  </div>
+
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+  <br>
+
+
+
+  <%= f.submit %>
+
+<% end %>
