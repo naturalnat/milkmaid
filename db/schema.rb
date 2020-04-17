@@ -10,46 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_170953) do
+ActiveRecord::Schema.define(version: 2020_04_17_025123) do
 
   create_table "milks", force: :cascade do |t|
     t.string "milktype"
-    t.integer "size"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "milk_id"
+    t.string "name"
     t.string "frequency"
     t.string "size"
-    t.integer "user_id", null: false
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
     t.integer "stars"
     t.string "title"
     t.string "content"
-    t.integer "user_id", null: false
-    t.integer "milk_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["milk_id"], name: "index_reviews_on_milk_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.integer "milk_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "password_digest"
     t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
   end
 
-  add_foreign_key "orders", "users"
-  add_foreign_key "reviews", "milks"
-  add_foreign_key "reviews", "users"
 end

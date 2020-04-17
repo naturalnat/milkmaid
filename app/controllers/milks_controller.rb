@@ -5,4 +5,5 @@ class MilksController < ApplicationController
       @milks = Milks.alpha
     end
 
+
 end

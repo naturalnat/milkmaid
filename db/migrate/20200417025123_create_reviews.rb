@@ -4,10 +4,7 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.integer :stars
       t.string :title
       t.string :content
-      t.belongs_to :user, null: false, foreign_key: true
-      t.belongs_to :milk, null: false, foreign_key: true
-
-      t.timestamps
+      t.integer :milk_id
     end
   end
 end

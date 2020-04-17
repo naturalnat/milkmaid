@@ -5,8 +5,15 @@
 
 <div>
     <%=  form_for(@order) do |f| %>
-  <%=  f.select :frequency, frequency_options, :prompt => 'select one' %>
+    Name of Order:  <%= f.text_field :name %><br>
+    Choose Frequency:
+  <%=  f.select :frequency, frequency_options, :prompt => 'select one' %><br>
+  Choose size:
     <%= f.select :size, size_options, :prompt => 'select one' %>
+    <br>
+    <%= f.label :milk_id, "Choose Milk:" %>
+    <%= f.collection_select :milk_id, Milk.all, :id, :milktype, prompt: true %>
+    <br>
  <%= f.submit "Place order" %>
 
 <% end %>

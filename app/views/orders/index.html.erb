@@ -1,0 +1,7 @@
+<% if @orders %>
+  <% @orders.each_with_index do |order, index| %>
+    <%= index+1 %>. <%= order.name %><br>
+  <% end %>
+  <% else %><br>
+  No orders currently placed.
+<%end %>
