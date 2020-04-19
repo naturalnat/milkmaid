@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_19_054008) do
+ActiveRecord::Schema.define(version: 2020_04_19_191205) do
 
   create_table "milks", force: :cascade do |t|
     t.string "milktype"
@@ -29,10 +29,10 @@ ActiveRecord::Schema.define(version: 2020_04_19_054008) do
     t.string "title"
     t.string "content"
     t.integer "milk_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
     t.string "email"
     t.string "password_digest"
     t.string "provider"

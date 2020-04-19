@@ -20,9 +20,15 @@ class ReviewsController < ApplicationController
 
 def show
   @review = Review.find_by_id(params[:id])
+  @milk = Milk.find_by_id(@review.milk_id)
 end
 
-private 
+def index
+  @reviews = Review.all
+
+end
+
+private
 
 def review_params
     params.require(:review).permit(:milk_id, :content, :stars, :title)

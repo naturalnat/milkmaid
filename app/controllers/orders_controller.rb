@@ -1,9 +1,13 @@
 class OrdersController < ApplicationController
     before_action :redirect_if_not_logged_in
 
-    def index;
-      @orders = Order.all
+    def index
+      if @orders = Order.where(user_id: session[:user_id])
+        @orders
+      else
+        @orders = Order.all
     end
+  end
 
     def new
       @order = Order.new
@@ -20,7 +24,6 @@ class OrdersController < ApplicationController
     end
 
     def show
-
     end
 
     private
