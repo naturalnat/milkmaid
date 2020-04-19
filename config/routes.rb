@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   delete '/logout', to: 'sessions#destroy'
 
+  get '/auth/:provider/callback' => 'sessions#create'
+
   resources :milks
   resources :orders
   resources :reviews

@@ -1,0 +1,7 @@
+<% if @reviews %>
+  <% @reviews.each_with_index do |order, index| %>
+    <%= index+1 %>. <%= review.name %><br>
+  <% end %>
+  <% else %><br>
+You have not left any reviews. Would you like to   <%= link_to "leave a review", new_review_path %>?
+<%end %>
