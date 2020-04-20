@@ -4,6 +4,8 @@ class OrdersController < ApplicationController
     def index
       if @orders = Order.where(user_id: session[:user_id])
         @orders
+      else
+        @orders = Order.all
     end
   end
 
