@@ -1,9 +1,10 @@
-welcome <%= @user.username %> !
+Welcome !
 
 <div>
-  <%= link_to "Place an Order", new_order_path %>  <br>
-<%= link_to "Show Orders", orders_path %> <br>
-  <%= link_to "Leave Review", new_review_path %> <br>
+  <div>
+    <%= link_to "Orders", orders_path %>  <br>
+  <%= link_to "Reviews", reviews_path %> <br>
 
-  <%= yield %>
+    <%= yield %>
+
 </div>

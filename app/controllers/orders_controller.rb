@@ -1,9 +1,11 @@
 class OrdersController < ApplicationController
     before_action :redirect_if_not_logged_in
 
-    def index;
-      @orders = Order.all
+    def index
+      if @orders = Order.where(user_id: session[:user_id])
+        @orders
     end
+  end
 
     def new
       @order = Order.new
@@ -19,8 +21,26 @@ class OrdersController < ApplicationController
       end
     end
 
-    def show
+    def edit
+       @order = Order.find_by(params[:id])
+    end
 
+
+    def update
+      if @order.update(order_params)
+      redirect_to orders_path
+    else
+      render :edit
+    end
+    end
+
+    def destroy
+      @order.destroy
+      redirect_to orders_path
+    end
+
+    def show
+      @order = Order.find_by(params[:id])
     end
 
     private
@@ -29,4 +49,8 @@ class OrdersController < ApplicationController
         params.require(:order).permit(:frequency, :size, :milk_id, :name)
       end
 
+      def selected_order
+        @order = Order.find_by(params[:id])
+        redirect_to orders_path if !@order
+      end
 end

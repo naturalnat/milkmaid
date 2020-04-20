@@ -1,5 +1,11 @@
 class SessionsController < ApplicationController
-  def welcome; end
+
+  def welcome
+      if logged_in?
+        @user = User.find(session[:user_id])
+        redirect_to user_path(@user)
+      end
+    end
 
   def new; end
 
@@ -9,18 +15,18 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if request.env["omniauth.auth"]
-      auth = request.env["omniauth.auth"]
-      user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
-      session[:user_id] = user.id
-      redirect_to user_path(user.id)
+    if params[:provider] == 'github'
+     @user = User.create_by_github_omniauth(auth)
+     puts @user
+     session[:user_id] = @user.id
+     redirect_to user_path(@user)
     else
-    @user = User.find_by(username: params[:user][:username])
+    @user = User.find_by(email: params[:user][:email])
     if @user&.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      flash[:error] = 'Please enter correct username and password.'
+    flash[:error] = 'Please enter correct e-mail address and password.'
       redirect_to login_path
       end
     end

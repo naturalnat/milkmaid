@@ -8,4 +8,8 @@ module OrdersHelper
     ["1 gallon", "1/2 gallon","1 Pint"]
   end
 
+  def self.getmilk(order_id)
+    @order = Order.find(order_id)
+    @order.milk
+  end
 end

@@ -5,5 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Milk.create!(:milktype=>'2%')
+Milk.create!(:milktype=>'2% Whole Milk')
 Milk.create!(:milktype=>'Skim Milk')
+Milk.create!(:milktype=>'Goat Milk')
+Milk.create!(:milktype=>'Almond Milk')

@@ -1,7 +1,9 @@
 <% if @orders %>
   <% @orders.each_with_index do |order, index| %>
-    <%= index+1 %>. <%= order.name %><br>
+    <%= index+1 %>. <%= order.name %>  <%= link_to "show", order_path(order) %> <%= link_to "Edit", edit_order_path(order) %><br>
   <% end %>
   <% else %><br>
   No orders currently placed.
 <%end %>
+
+<%= link_to "Place an Order", new_order_path %>
