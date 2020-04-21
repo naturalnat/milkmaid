@@ -1,8 +1,8 @@
 <% if @orders %>
   <% @orders.each_with_index do |order, index| %>
-    <%= index+1 %>. <%= order.name %>  <%= link_to "show", order_path(order) %> <br>
+    <%= index+1 %>. <%= order.name %> <%= link_to "show", order_path(order) %> <br>
   <% end %>
-  <% else %><br>
+<% else %><br>
   No orders currently placed.
 <%end %>
 

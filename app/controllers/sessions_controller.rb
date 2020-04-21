@@ -1,10 +1,11 @@
-class SessionsController < ApplicationController
+# frozen_string_literal: true
 
+class SessionsController < ApplicationController
   def welcome
-      if logged_in?
-        @user = User.find(session[:user_id])
-        redirect_to user_path(@user)
-      end
+    if logged_in?
+      @user = User.find(session[:user_id])
+      redirect_to user_path(@user)
+    end
     end
 
   def new; end
@@ -16,26 +17,25 @@ class SessionsController < ApplicationController
 
   def create
     if params[:provider] == 'github'
-     @user = User.create_by_github_omniauth(auth)
-     puts @user
-     session[:user_id] = @user.id
-     redirect_to user_path(@user)
-    else
-    @user = User.find_by(email: params[:user][:email])
-    if @user&.authenticate(params[:user][:password])
+      @user = User.create_by_github_omniauth(auth)
+      puts @user
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-    flash[:error] = 'Please enter correct e-mail address and password.'
-      redirect_to login_path
-      end
+      @user = User.find_by(email: params[:user][:email])
+      if @user&.authenticate(params[:user][:password])
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
+      else
+        flash[:error] = 'Please enter correct e-mail address and password.'
+        redirect_to login_path
+        end
     end
     end
-    
-private
 
-    def auth
-      request.env['omniauth.auth']
-    end
+  private
 
+  def auth
+    request.env['omniauth.auth']
+  end
 end

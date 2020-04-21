@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_many :reviews
   has_many :orders
@@ -7,9 +9,8 @@ class User < ApplicationRecord
   has_secure_password
 
   def self.create_by_github_omniauth(auth)
-    self.find_or_create_by(email: auth[:info][:email]) do |user|
+    find_or_create_by(email: auth[:info][:email]) do |user|
       user.password_digest = SecureRandom.uuid
     end
-
   end
 end
