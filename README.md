@@ -1,25 +1,9 @@
-# README
+# Milkmaid
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app allows the user to place an order for milk in reusable packaging. The user can view and manage their orders as well as reviews. 
+# Installation
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# milkmaid
+- Clone this Repo
+- Run 'bundle install' from the root directory
+- Run 'rails db:migrate'
+- Run 'rails db:seed' to see the data 
