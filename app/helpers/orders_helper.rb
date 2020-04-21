@@ -10,6 +10,6 @@ module OrdersHelper
 
   def self.getmilk(order_id)
     @order = Order.find(order_id)
-    @order.milk
+    @order.milktype
   end
 end

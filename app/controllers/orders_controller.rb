@@ -24,25 +24,30 @@ class OrdersController < ApplicationController
     end
 
     def edit
-       @order = Order.find_by(params[:id])
+      puts params[:id]
+       @order = Order.find_by_id(params[:id])
     end
 
 
     def update
-      if @order.update(order_params)
-      redirect_to orders_path
-    else
-      render :edit
-    end
+      @order = Order.find_by_id(params[:id])
+      if @order.update_attributes(order_params)
+        redirect_to orders_path
+      else
+        flash[:error] = 'Error, please try again.'
+        render :edit
+      end
     end
 
     def destroy
+      selected_order
       @order.destroy
       redirect_to orders_path
     end
 
     def show
-      @order = Order.find_by(params[:id])
+      @order = Order.find_by_id(params[:id])
+      @milk = Milk.find_by_id(@order.milk_id)
     end
 
     private

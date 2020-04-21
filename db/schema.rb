@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_184850) do
+ActiveRecord::Schema.define(version: 2020_04_20_192625) do
 
   create_table "milks", force: :cascade do |t|
     t.string "milktype"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 2020_04_20_184850) do
     t.string "name"
     t.string "frequency"
     t.string "size"
-    t.string "milktype"
   end
 
   create_table "reviews", force: :cascade do |t|

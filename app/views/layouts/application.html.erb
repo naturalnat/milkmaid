@@ -9,16 +9,17 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-<footer>
-<div>
-
-<% if logged_in? %>
-  <%= link_to "Log Out", logout_path, method: :delete  %>
-   <% end %>
-</div>
-</footer>
+  <footer>
+  <% if logged_in? %>
+    <%= link_to "Home", users_path %>
+    <%= link_to "Log Out", logout_path, method: :delete  %>
+   
+    <% end %>
+  
+  </footer>
 
   <body>
+  
     <%= yield %>
   </body>
 </html>

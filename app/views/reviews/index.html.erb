@@ -1,9 +1,12 @@
-<%= link_to "leave a review", new_review_path %>
-
 <% if @reviews %>
   <% @reviews.each_with_index do |review, index| %>
-    <%= index+1 %>. <%= review.title %> - <%= UsersHelper.getusername(review.user_id) %><br>
-  <% end %>
+    <%= index+1 %>. <%= review.title %> - <%= UsersHelper.getusername(review.user_id) %>
+    <%= link_to "More Details", review_path(review) %> 
+    <br>
+    <% end %>
   <% else %><br>
 Nothing to show.
-<%end %>
+<% end %>
+
+<%= link_to "leave a review", new_review_path %>
+
