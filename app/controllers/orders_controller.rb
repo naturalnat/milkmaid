@@ -19,19 +19,19 @@ class OrdersController < ApplicationController
       if @order.save
         redirect_to orders_url
       else
+        flash[:error] = 'Error, please fill in all fields and try again.'
         render :new
       end
     end
 
     def edit
-      puts params[:id]
        @order = Order.find_by_id(params[:id])
     end
 
 
     def update
       @order = Order.find_by_id(params[:id])
-      if @order.update_attributes(order_params)
+      if @order.update_attributes(order_params) 
         redirect_to orders_path
       else
         flash[:error] = 'Error, please try again.'

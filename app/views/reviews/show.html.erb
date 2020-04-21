@@ -1,11 +1,11 @@
-Review of <%= @milk.milktype %> 
+<b>Review of:</b>  <%= @milk.milktype %> 
 <br>
-Rating: <%= @review.stars %>
+<b>Rating:</b>  <%= @review.stars %>
 <br>
-Title: <%= @review.title %>
+<b>Title:</b>  <%= @review.title %>
 <br>
-Conent: <%= @review.content %>
+<b>Conent:</b>  <%= @review.content %>
 <br>
-User: <%= UsersHelper.getusername(@review.user_id) %>
+<b>User: </b><%= UsersHelper.getusername(@review.user_id) %>
 <br>
 <%= link_to "All Reviews", reviews_path %>

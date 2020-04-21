@@ -14,6 +14,7 @@ class ReviewsController < ApplicationController
       if @review.save
         redirect_to review_path(@review)
       else
+        flash[:error] = 'Error, please fill in all fields and try again.'
         render :new
       end
   end

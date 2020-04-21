@@ -4,22 +4,44 @@
     <title>Milkmaid</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="../style.css" rel="stylesheet">
   </head>
 
-  <footer>
-  <% if logged_in? %>
-    <%= link_to "Home", users_path %>
-    <%= link_to "Log Out", logout_path, method: :delete  %>
-   
-    <% end %>
-  
-  </footer>
 
-  <body>
-  
-    <%= yield %>
-  </body>
+  <nav class="navbar navbar-default navbar-static-top">
+  <ul class="nav navbar-nav">
+      <% if logged_in? %>
+      <li> <%= link_to "Milkmaid", user_path(current_user.id) %> </li>
+       <li> <%= link_to "Orders", orders_path %> </li>
+        <li> <%= link_to "Reviews", reviews_path %> </li>
+        <li><%= link_to "Log Out", logout_path, method: :delete  %></li>
+      <% else %>
+       <li> <%= link_to "Milkmaid", "/" %> </li>
+      <% end %>
+  </ul>
+
+  <% if logged_in? %>
+   <p class="navbar-text navbar-right" style ="margin-right: 15px;">Signed in as (<%= current_user.email%>)</b></p>
+   <% end %>
+</nav>
+
+
+  <div class="container">
+  <div class="row">
+    <%= content_tag(:div, flash[:error], :class => "alert alert-warning") if flash[:error] %>
+    <%= content_tag(:div, flash[:notice], :class => "alert alert-success") if flash[:notice] %>
+    <%= content_tag(:div, flash[:alert], :class => "alert alert-danger") if flash[:alert] %>
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="jumbotron"><%= yield %>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+
+
 </html>

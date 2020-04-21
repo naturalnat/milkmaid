@@ -1,7 +1,6 @@
-<%= @order.name %><br>
- <%=@milk.milktype %>
-<%= @order.size %> <br>
-<%= @order.frequency %><br>
-puts <%= @order.id %>
+<b>Order Name: </b><%= @order.name %><br>
+<b>Milk Type:</b> <%=@milk.milktype %> <br>
+<b>Milk Size: </b><%= @order.size %><br>
+<b>Order Frequency: </b> <%= @order.frequency %><br>
 <%= link_to "Edit", edit_order_path(@order) %>
 <%= link_to "Cancel Order", order_path(@order), method: :delete %> 
