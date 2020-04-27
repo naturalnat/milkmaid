@@ -27,11 +27,11 @@ end
   end
 
   def edit
-    @order = Order.find_by_id(params[:id])
+    selected_order(params[:id])
   end
 
   def update
-    @order = Order.find_by_id(params[:id])
+    selected_order(params[:id])
     if @order.update_attributes(order_params)
       redirect_to orders_path
     else
@@ -41,13 +41,13 @@ end
   end
 
   def destroy
-    selected_order
+    selected_order(params[:id])
     @order.destroy
     redirect_to orders_path
   end
 
   def show
-    @order = Order.find_by_id(params[:id])
+    selected_order(params[:id])
     @milk = Milk.find_by_id(@order.milk_id)
   end
 
@@ -57,8 +57,8 @@ end
     params.require(:order).permit(:frequency, :size, :milk_id, :name)
    end
 
-  def selected_order
-    @order = Order.find_by(params[:id])
-    redirect_to orders_path unless @order
+  def selected_order(id)
+    @order = Order.find_by_id(id)
+    @order
   end
 end

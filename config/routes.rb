@@ -1,6 +1,5 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
+  
   get 'order/index'
   get '/', to: 'sessions#welcome'
   get '/login', to: 'sessions#new'
