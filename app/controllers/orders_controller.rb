@@ -16,8 +16,8 @@ end
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.user_id = session[:user_id]
+   @order = current_user.orders.build(order_params)
+    # @order = Order.new(order_params)
     if @order.save
       redirect_to orders_url
     else

@@ -21,6 +21,11 @@ class UsersController < ApplicationController
     redirect_to '/' unless @user
   end
 
+  def index
+    @most_reviewed = Review.most_reviews
+    puts @most_reviewed
+  end
+
   private
 
   def user_params

@@ -26,6 +26,8 @@ class ReviewsController < ApplicationController
 
   def index
     @reviews = Review.all
+    @most_reviewed = User.most_reviews.first
+    @most_reviewed = UsersHelper.getusername(@most_reviewed.id)
   end
 
   private
