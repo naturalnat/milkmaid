@@ -17,7 +17,6 @@ end
 
   def create
    @order = current_user.orders.build(order_params)
-    # @order = Order.new(order_params)
     if @order.save
       redirect_to orders_url
     else
