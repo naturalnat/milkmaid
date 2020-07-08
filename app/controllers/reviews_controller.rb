@@ -25,10 +25,12 @@ class ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.all
+    if @reviews 
+    @reviews = Review.all 
     @most_reviewed = User.most_reviews.first
     @most_reviewed = UsersHelper.getusername(@most_reviewed.id)
-  end
+  end 
+end
 
   private
 

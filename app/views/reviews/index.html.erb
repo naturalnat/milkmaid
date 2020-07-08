@@ -1,6 +1,3 @@
-<h4>User with most Reviews: <%=@most_reviewed%></h4><br>
-
-
 <% if @reviews %>
   <% @reviews.each_with_index do |review, index| %>
     <%= index+1 %>. <%= review.title %> -  <i><%= UsersHelper.getusername(review.user_id) %> </i>
@@ -11,6 +8,8 @@
   <br>
 Nothing to show.
 <% end %>
+
+<h4>User with most Reviews: <%=@most_reviewed%></h4>
 
 <%= link_to "Leave a review", new_review_path %>
 
